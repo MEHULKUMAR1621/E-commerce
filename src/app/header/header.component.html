@@ -1,0 +1,32 @@
+
+    <mat-toolbar color="accent">
+        <span>
+            <a style="font-size: larger; cursor: pointer" routerLink="/" routerLinkActive="mat-warn">Oshop</a>
+        </span>
+        <span>
+            <ul>
+                <li>
+                    <a mat-button routerLink="/cart" routerLinkActive="mat-warn" *ngIf="userIsAuthenticated">Cart</a>
+                </li>
+                <li>
+                    <a mat-button routerLink="/order" routerLinkActive="mat-warn" *ngIf="userIsAuthenticated">Orders</a>
+                </li>
+                <li>
+                    <a mat-button routerLink="/create" routerLinkActive="mat-warn" *ngIf="userIsAuthenticated">Add-Product</a>
+                </li>
+            </ul>
+        </span>
+        <span class="spacer"></span>
+        <ul>
+            <li>
+                <a mat-button routerLink="/login" routerLinkActive="mat-warn" *ngIf="!userIsAuthenticated"> Login </a>
+            </li>
+            <li>
+                <a mat-button routerLink="/signup" routerLinkActive="mat-warn" *ngIf="!userIsAuthenticated"> SignUp </a>
+            </li>
+            <li>
+                <a mat-button *ngIf="userIsAuthenticated" (click)="onLogout()"> LogOut </a>
+            </li>
+        </ul>
+    
+    </mat-toolbar>

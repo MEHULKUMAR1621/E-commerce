@@ -1,0 +1,29 @@
+tr :hover{
+    cursor: pointer;
+    background-color: rgb(35, 160, 209);
+    font-weight: 550;
+}
+th{
+    font-weight: 600;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+ }
+ 
+ .row > div[class*='col-'] {
+   display: flex;
+ }
+ 
+
+#id1{
+     color: rgb(16, 43, 16);
+     border: rgb(15, 65, 15) solid 2px;
+     background-color: rgb(255, 255, 255);
+}
+
+#id1:hover{
+    background-color: rgb(19, 73, 26);
+    color: white;
+}

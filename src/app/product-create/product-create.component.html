@@ -1,0 +1,32 @@
+<form (submit)="onSubmit(create)" #create="ngForm">
+    <mat-card>
+        <h1><u>Add Product</u></h1>
+        <mat-form-field>
+            <input matInput placeholder="Product-Title" ngModel name="title" #title="ngModel" required>
+            <mat-error *ngIf="title.invalid"  style="text-align: end;">Please enter a title..</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <input matInput type="number" placeholder="Product-Price" min="1" ngModel name="price" #price="ngModel" required >
+            <mat-error *ngIf="price.invalid"  style="text-align: end;">Please enter a correct price.</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <input matInput type="text" placeholder="Product-Category" ngModel name="category" #category="ngModel" required>
+            <mat-error *ngIf="category.invalid"  style="text-align: end;">Please enter a valid category.</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <input matInput type="text" placeholder="Product-Description" ngModel name="description" #description="ngModel" required>
+            <mat-error *ngIf="description.invalid"  style="text-align: end;">Please enter a description.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Product-ImageUrl" ngModel name="imageUrl" #imageUrl="ngModel" required>
+            <mat-error *ngIf="imageUrl.invalid"  style="text-align: end;">Please enter image Url Link.</mat-error>
+        </mat-form-field>
+        <img [src]="imageUrl.value" [alt]="title" *ngIf="imageUrl.valid">
+        <div style="text-align: center; padding: 10px;">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!create.valid">Create</button>
+        </div>
+    </mat-card>
+</form>

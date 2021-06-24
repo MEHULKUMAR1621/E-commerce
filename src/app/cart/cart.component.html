@@ -1,0 +1,82 @@
+<div style="text-align: end; padding-right: 50px; margin-top: 30px;">
+</div>
+<div>
+    <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; text-align: center; padding: 10px;"> Shopping Cart </h1>
+</div>
+<div class="container" *ngIf="!carts" style="padding-left: 1rem;">
+</div>
+<div *ngIf="carts.length==0">
+    <div style="text-align: center;">
+        <img src="https://travelfube.com/images/empty-cart.jpg">
+    </div>
+</div>
+<div *ngIf="carts.length>0">
+    <div class="container" *ngFor="let cart of carts; index as i " style="padding: 10px;">
+        <div class="card" >
+            <div class="card-body">
+                <div>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h2 class="card-title">{{cart.productId.title}}</h2>
+                            <h3 style="margin-top: 1rem;">Price: {{cart.productId.price | currency}}</h3>
+                            <span >
+                                <h4 style="margin-top: 1rem;">Quantity:
+                                    <span>
+                                        <button id="id2" (click)="decreamentQty(cart.productId._id,i)"  >-</button> 
+                                        <span style="font-size: medium;">{{cart.quantity}}</span>
+                                        <button id="id1" (click)="increamentQty(cart.productId._id,i)" >+</button>
+                                    </span>
+                                </h4>
+                            </span>
+                        </div>
+                        <div class="col-sm-7">
+                            <div style="text-align: end; padding-bottom: 20px;">
+                                <button mat-button id="id3" (click)="onDelete(cart.productId._id)" style="font-size: 15px;">Delete</button>
+                            </div>
+                            <img [src]="cart.productId.imageUrl" [alt]="cart.productId.title" height="160px" class="rounded float-right">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="totalcart > 0 ">
+    <hr>
+    <h5>
+        Shipping Address Details..
+    </h5>
+    <div class="container" style="width: 50rem; padding: 1rem;">
+        <mat-card>
+            <form (submit)="onSubmit(shop)" #shop="ngForm">
+                <mat-form-field>
+                    <input matInput type="text" ngModel name="fname" placeholder="Purchasee First Name" #fname="ngModel" required minlength="3">
+                    <mat-error *ngIf="fname.invalid"  style="text-align: end;">Please enter a valid name and its required..</mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <input matInput type="text" ngModel name="lname" placeholder="Purchasee Last Name" #lname="ngModel" required>
+                    <mat-error *ngIf="lname.invalid"  style="text-align: end;">Please enter a lastname.</mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <input matInput type="text" ngModel name="address" placeholder="Delivery Address" #address="ngModel" required maxlength="25">
+                    <mat-error *ngIf="address.invalid"  style="text-align: end;">Please enter a valid address.</mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <input matInput type="text" ngModel name="city" placeholder="City" #city="ngModel" required>
+                    <mat-error *ngIf="city.invalid"  style="text-align: end;">This field is required.</mat-error>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <input matInput type="text" ngModel name="pincode" placeholder="Pincode" #pincode="ngModel" required>
+                    <mat-error *ngIf="pincode.invalid"  style="text-align: end;">This field is required..</mat-error>
+                </mat-form-field>
+                <div style="text-align: center; padding: 0.5rem;">
+                    <button mat-raised-button color="accent" type="submit" [disabled]="!shop.valid" (click)="onPlace()"> Place Order </button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

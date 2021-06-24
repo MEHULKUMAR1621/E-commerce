@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-3" style="margin: 1rem;">
+        <table class="table">
+            <thead class="thead-dark" style="text-align: center;">
+                <th scope="row" (click)="onAll()" style="cursor: pointer;">
+                    All Categories
+                </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td (click)="onCategory('Breads')">
+                        <a style="color: black;">Breads</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td (click)="onCategory('Vegetables')">
+                        <a style="color: black;">Vegetable</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td (click)="onCategory('Dairy')">
+                        <a style="color: black;">Dairy</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td (click)="onCategory('Fruits')">
+                        <a style="color: black;">Fruits</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td (click)="onCategory('Seasonal and Spices')">
+                        <a style="color: black;">Seasonal and Spices</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <div class="container">
+            <div class="row" style="padding: 10px;" >
+                <div class="col-sm-4" *ngFor="let product of products" style="padding:1rem;">
+                    <div class="card">
+                        <img [src]="product.imageUrl" [alt]="product.title" height="250px" width="300px" class="rounded" style="margin: auto; align-items:flex-start;">
+                        <div class="card-body">
+                            <div style="text-align: center;">
+                                <h3 class="card-title">{{product.title}}</h3>
+                                <h4 class="card-subtitle mb-2 text-muted">{{product.price | currency }}</h4>
+                                <h6 class="card-text">{{product.description}}</h6>
+                                <a class="btn btn-success" id="id1" type="submit" (click)="addCart(product.id)" *ngIf="count == -1">Add Cart</a>
+                                <button class="btn btn-success" type="submit" (click)="decreament()" *ngIf="count>0" [disabled]="count==0"> - </button >
+                                <h3 *ngIf="count>0">{{count}}</h3>
+                                <button class="btn btn-success" type="submit" (click)="increament()" *ngIf="count>0" > + </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

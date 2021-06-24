@@ -1,0 +1,22 @@
+<form (submit)="onSubmit(loginform)" #loginform="ngForm">
+    <mat-card>
+        <div>
+            <h1><u>User Login</u></h1>
+        </div>
+        <mat-form-field>
+            <input matInput placeholder="E-Mail" ngModel name="email" #email="ngModel">
+            <mat-error *ngIf="email.invalid"  style="text-align: end;">Please enter a valid email.</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" ngModel name="password" #password="ngModel">
+            <mat-error *ngIf="password.invalid"  style="text-align: end;">Please enter Password.</mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" type="button">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <div style="text-align: center;">
+            <button mat-raised-button color="accent" type="submit" [disabled]="!loginform.valid">Login</button>
+        </div>
+    </mat-card>
+</form>

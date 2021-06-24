@@ -1,0 +1,28 @@
+<div>
+    <div class="container">
+        <div style="text-align: center;">
+            <h2 style="margin-top: 30px;">ThankYou For Ordering..</h2>
+            <h6> We ensure to deliver on the previous mentioned Address.. </h6>
+            <small>Thank You for choosing Us..</small>
+        </div>
+        <h1 style="font-family:Georgia, 'Times New Roman', Times, serif; text-align: center; margin-top: 30px;">Order
+            Details</h1>
+        <div class="card" *ngFor="let order of orders">
+            <div class="row" *ngFor="let p of order index as i">
+                <div class="col" style="display: inline;">
+                        <div *ngIf="i==0">
+                            <h6>orderId: {{p._id}}</h6>
+                            <hr>
+                        </div>
+                        <h5> {{p.product.title}} </h5>
+                        <span style="padding-left: 5px;">
+                            <h6>₹{{p.product.price}} x {{p.quantity}}</h6>
+                        </span>
+                    </div>
+                    <div class="col" style="text-align:end;">
+                        <img [src]="p.product.imageUrl" style="height: 100px; width: 100px;">
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
